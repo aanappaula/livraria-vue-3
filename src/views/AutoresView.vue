@@ -1,5 +1,5 @@
 <script>
-import AutoresApi from "@/api/autores";
+import AutoresApi from "@/api/autor";
 const autoresApi = new AutoresApi();
 export default {
   data() {
@@ -9,24 +9,24 @@ export default {
     };
   },
   async created() {
-    this.autores = await autoresApi.buscarTodasOsAutores();
+    this.autores = await autoresApi.buscarTodosOsAutores();
   },
   methods: {
     async salvar() {
       if (this.autor.id) {
-        await autoresApi.atualizarAutore(this.autor);
+        await autoresApi.atualizarAutor(this.autor);
       } else {
-        await autoresApi.adicionarAutore(this.autor);
+        await autoresApi.adicionarAutor(this.autor);
       }
       this.autor = {};
-      this.autores = await autoresApi.buscarTodasAsAutores();
+      this.autores = await autoresApi.buscarTodosOsAutores();
     },
     editar(autor) {
       Object.assign(this.autor, autor);
     },
     async excluir(autor) {
-      await autoresApi.excluirAutores(autor.id);
-      this.autores = await autoresApi.buscarTodasAsAutores();
+      await autoresApi.excluirAutor(autor.id);
+      this.autores = await autoresApi.buscarTodosOsAutores();
     },
   },
 };
@@ -36,7 +36,7 @@ export default {
   <h1>Autor</h1>
   <hr />
   <div class="form">
-    <input type="text" v-model="autor.descricao" placeholder="Descrição" />
+    <input type="text" v-model="autor.nome" placeholder="Descrição" />
     <button @click="salvar">Salvar</button>
   </div>
   <hr />
