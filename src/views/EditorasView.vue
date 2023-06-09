@@ -36,7 +36,7 @@ export default {
   <h1>Editora</h1>
   <hr />
   <div class="form">
-    <input type="text" v-model="editora.descricao" placeholder="Descrição" />
+    <input type="text" v-model="editora.nome" placeholder="Descrição" />
     <button @click="salvar">Salvar</button>
   </div>
   <hr />
